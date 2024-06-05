@@ -264,3 +264,13 @@ align-items: center;
   font-size: 20px;
  
 }
+
+.info{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.card{
+  margin: 10px;
+}

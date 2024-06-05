@@ -122,10 +122,14 @@ function updateForecast(data) {
 }
 
 async function fetch_news() {
+    const currentDate = new Date();
+    currentDate.setDate(currentDate.getDate() - 31);
+    const dateFormatted = currentDate.toISOString().split('T')[0];
+
     const api_key = 'addef33392ec438b8a2b2aa8e484dad3';
 
     try {
-        const response = await fetch(`https://newsapi.org/v2/everything?q=floods&from=2024-05-01&sortBy=publishedAt&apiKey=${api_key}`);
+        const response = await fetch(`https://newsapi.org/v2/everything?q=floods&from=${dateFormatted}&sortBy=publishedAt&apiKey=${api_key}`);
 
         if (!response.ok) {
             throw new Error("News not found");
@@ -138,6 +142,7 @@ async function fetch_news() {
         console.error(error);
     }
 }
+fetch_news();
 
 function displayNews(articles) {
     const newsRow = document.getElementById('newsRow');
@@ -182,4 +187,26 @@ function displayNews(articles) {
     });
 }
 
-fetch_news();
+const ws = new WebSocket('ws://localhost:8080');
+
+ws.onopen = () => {
+    console.log('Connected to WebSocket');
+};
+
+ws.onmessage = (event) => {
+    const message = event.data;
+    alert('Received: ' + message);
+
+
+};
+
+ws.onclose = () => {
+    console.log('Connection closed');
+};
+
+
+
+
+
+
+
