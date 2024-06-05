@@ -21,8 +21,8 @@ document.querySelector('.search-btn').addEventListener('click', function() {
 
 async function fetchWeatherData(city) {
   const apiKey = '1af9a00253a511b86c8b4401a49e1673';
-  const weatherUrl = https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric;
-  const forecastUrl = https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric;
+  const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
   
   try {
       const weatherResponse = await fetch(weatherUrl);
@@ -60,12 +60,12 @@ function getWeatherBackground(condition) {
 function updateCurrentWeather(data) {
   const currentWeather = document.querySelector('.current-weather .details');
   const weatherCondition = data.weather[0].main;
-  const iconUrl = https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png;
+  const iconUrl = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
 
-  currentWeather.querySelector('h2').textContent = ${data.name} (${data.weather[0].description});
-  currentWeather.querySelector('h6:nth-child(2)').textContent = Temperature: ${data.main.temp}°C;
-  currentWeather.querySelector('h6:nth-child(3)').textContent = Wind: ${data.wind.speed} M/S;
-  currentWeather.querySelector('h6:nth-child(4)').textContent = Humidity: ${data.main.humidity}%;
+  currentWeather.querySelector('h2').textContent = `${data.name} (${data.weather[0].description})`;
+  currentWeather.querySelector('h6:nth-child(2)').textContent = `Temperature: ${data.main.temp}°C`;
+  currentWeather.querySelector('h6:nth-child(3)').textContent = `Wind: ${data.wind.speed} M/S`;
+  currentWeather.querySelector('h6:nth-child(4)').textContent = `Humidity: ${data.main.humidity}%`;
 
   let imgElement = currentWeather.querySelector('img');
   if (!imgElement) {
@@ -92,13 +92,13 @@ function updateForecast(data) {
       if (index < 5) {
           const forecast = data.list[index * 8];
           const date = new Date(forecast.dt_txt);
-          const iconUrl = https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png;
+          const iconUrl = `https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`;
 
           const forecastData = {
               date: date.toDateString(),
-              temp: Temp: ${forecast.main.temp}°C,
-              wind: Wind: ${forecast.wind.speed} M/S,
-              humidity: Humidity: ${forecast.main.humidity}%,
+              temp: `Temp: ${forecast.main.temp}°C`,
+              wind: `Wind: ${forecast.wind.speed} M/S`,
+              humidity: `Humidity: ${forecast.main.humidity}%`,
               iconUrl: iconUrl,
               description: forecast.weather[0].description
           };
@@ -125,7 +125,7 @@ async function fetch_news() {
     const api_key = 'addef33392ec438b8a2b2aa8e484dad3';
 
     try {
-        const response = await fetch(https://newsapi.org/v2/everything?q=floods&from=2024-05-01&sortBy=publishedAt&apiKey=${api_key});
+        const response = await fetch(`https://newsapi.org/v2/everything?q=floods&from=2024-05-01&sortBy=publishedAt&apiKey=${api_key}`);
 
         if (!response.ok) {
             throw new Error("News not found");
