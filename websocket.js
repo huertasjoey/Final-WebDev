@@ -1,17 +1,30 @@
-const conn = new WebSocket('ws://localhost:8080')
+const express = require('express');
+const http = require('http');
+const WebSocket = require('ws');
 
-conn.addEventListener("message", (message)=>{
+const app = express();
+const server = http.createServer(app);
 
-})
+const wsServer = new WebSocket.Server({ noServer: true });
 
-function send_message(){
-    chat = document.getElementById("message_field").value
-    const message = JSON.stringify(
-        {
-            user : user,
-            data : chat
-        }
-    )
-    conn.send(message)
-    document.getElementById("message_field").value = ""
-}
+wsServer.on('connection', (ws) => {
+    ws.send('Welcome!');
+
+    ws.on('message', (message) => {
+        console.log('Received message:', message);
+    });
+
+    ws.on('close', () => {
+        console.log('Client disconnected');
+    });
+});
+
+server.on('upgrade', (request, socket, head) => {
+    wsServer.handleUpgrade(request, socket, head, (ws) => {
+        wsServer.emit('connection', ws, request);
+    });
+});
+
+server.listen(8080, () => {
+    console.log('Server is listening on port 8080');
+});
