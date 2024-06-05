@@ -1,0 +1,266 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+    --primary-color: #393E46;
+    --secondary-color: #00ADB5;
+    --background-color: #EEEEEE;
+    --text-color: #FFFFFF;
+    --input-focus-color: #00ADB5;
+    --input-border-color: #CCCCCC;
+    --input-background-color: #EEEEEE;
+  }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+section {
+  height: auto;
+  width: auto;
+  min-height: 94vh;
+}
+
+#homePage{
+    background-color: var(--background-color);
+}
+
+h1 {
+  background: var(--primary-color);
+  font-size: 1.75rem;
+  text-align: center;
+  padding: 18px 0;
+  color: var(--text-color);
+}
+
+.container {
+  display: flex;
+  gap: 150px;
+  padding: 30px;
+}
+
+.weather-input {
+  width: 550px;
+}
+
+.weather-input input {
+  height: 46px;
+  width: 100%;
+  outline: none;
+  font-size: 1.07rem;
+  padding: 0 17px;
+  margin: 10px 0 20px 0;
+  border-radius: 4px;
+  border: 1px solid var(--input-border-color);
+}
+
+.weather-input input:focus {
+  padding: 0 16px;
+  border: 2px solid var(--input-focus-color);
+}
+
+.weather-input .separator {
+  height: 1px;
+  width: 100%;
+  margin: 25px 0;
+  background: var(--separator-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.weather-input .separator::before {
+  content: "or";
+  color: var(--secondary-color);
+  font-size: 1.18rem;
+  padding: 0 15px;
+  margin-top: -4px;
+  background: var(--input-background-color);
+}
+
+.weather-input button {
+  width: 100%;
+  padding: 10px 0;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  color: var(--text-color);
+  background: var(--primary-color);
+  transition: 0.2s ease;
+}
+
+.weather-input .search-btn:hover {
+  background: var(--secondary-color);
+}
+
+.weather-input .location-btn {
+  background: var(--secondary-color);
+}
+
+.weather-input .location-btn:hover {
+  background: #5c636a;
+}
+
+.weather-data {
+  width: 100%;
+}
+
+.weather-data .current-weather {
+  color: var(--text-color);
+  background: var(--primary-color);
+  border-radius: 5px;
+  padding: 20px 70px 20px 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.current-weather h2 {
+  font-weight: 700;
+  font-size: 1.7rem;
+}
+
+.weather-data h6 {
+  margin-top: 12px;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.current-weather .icon {
+  text-align: center;
+}
+
+.current-weather .icon img {
+  max-width: 120px;
+  margin-top: -15px;
+}
+
+.current-weather .icon h6 {
+  margin-top: -10px;
+  text-transform: capitalize;
+}
+
+.days-forecast h2 {
+  margin: 20px 0;
+  font-size: 1.5rem;
+}
+
+.days-forecast .weather-cards {
+  display: flex;
+  gap: 20px;
+}
+
+.weather-cards .card {
+  color: var(--text-color);
+  padding: 18px 16px;
+  list-style: none;
+  width: calc(100% / 5);
+  background: var(--secondary-color);
+  border-radius: 5px;
+}
+
+.weather-cards .card h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.weather-cards .card img {
+  max-width: 70px;
+  margin: 5px 0 -12px 0;
+}
+
+@media (max-width: 1400px) {
+  .weather-data .current-weather {
+    padding: 20px;
+  }
+  .weather-cards {
+    flex-wrap: wrap;
+  }
+  .weather-cards .card {
+    width: calc(100% / 4 - 15px);
+  }
+}
+
+@media (max-width: 1200px) {
+  .weather-cards .card {
+    width: calc(100% / 3 - 15px);
+  }
+}
+
+@media (max-width: 950px) {
+  .weather-input {
+    width: 450px;
+  }
+  .weather-cards .card {
+    width: calc(100% / 2 - 10px);
+  }
+}
+
+@media (max-width: 750px) {
+  h1 {
+    font-size: 1.45rem;
+    padding: 16px 0;
+  }
+  .container {
+    flex-wrap: wrap;
+    padding: 15px;
+  }
+  .weather-input {
+    width: 100%;
+  }
+  .weather-data h2 {
+    font-size: 1.35rem;
+  }
+}
+
+.navbar-nav {
+  margin: 0 auto;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.navbar{
+  background-color: var(--secondary-color);
+}
+
+.carousel_image{
+  width: 1000px;
+  height: 800px;
+  border-radius: 50%;
+  padding-top: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.goal_header{
+position: relative;
+font-size: 40px;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.goal{
+  font-family: century;
+
+}
+.outer_goal{
+  position: relative;
+  font-size: 30px;
+  padding-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inner_goal{
+  justify-content: center;
+  position: relative;
+  padding-top: 20px;
+  font-size: 20px;
+ 
+}
